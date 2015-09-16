@@ -1,0 +1,86 @@
+.\" Process this file with
+.\" groff -man -Tascii arb.1 | less
+.\"
+.TH ARB 1 "JUNE 2008"
+.SH NAME
+arb \- Anti red\-bond calculation algorithm
+.SH SYNOPSIS
+.br
+.B arb
+[\-L \fIsize\fR] [\-d \fIdensity\fR] [\-n \fInumber\fR] [-sBbpe]
+.SH DESCRIPTION
+.PP
+Calculate the number of anti red-bond for square or cubic lattice.
+.SS Options
+.TP
+\fB\-L\fR \fIsize\fR
+Set the size of the lattice (ie.: the length of the side)
+.TP
+\fB\-d\fR \fIdensity\fR
+Set the percolating density of the lattice
+.TP
+\fB\-n\fR \fInumber\fR
+Set the number of non-percolating lattices generated for the given size an density. The number of anti red\-bond for each lattice will be sent to stderr and the statistic of those lattices sent to stdout
+.TP
+\fB\-p\fR
+Doesn't calculate the number of anti red\-bond but generate a number of lattices (given by the -n option) and give the statistic about the percentage which percolate.
+.TP
+\fB\-s\fR
+Use a square lattice instead of a cubic one.
+.TP
+\fB\-b\fR
+In addition to normal output, writes to stderr the number of bridges
+.TP
+\fB\-B\fR
+Calculate the number of bridges (this option replace the normal output)
+.TP
+\fB\-e\fR
+Export informations about the lattice to external data files. Those files are: arb.dat, output.dat, bridges.dat and pointer.dat ! This is useless to use the \-n option because only the last lattice scanned will be used to store the info. Once those files are written, you could use the script 3dshow.py to see graphicaly the lattice.
+.SH OUTPUT
+All outputs look like the following:
+.PP
+Size Density Mean Stdandard-Deviation
+.SH FILES
+.TP
+arb
+The programme which perform the calculation of the ARB
+.TP
+3dshow.py
+A python script which display graphicaly 2d and 3d lattices.
+.SS Description
+This script will show you the lattice in a 3d window.
+You can rotate the lattice by holding the right mouse button and zoom with the scroll button.
+The spheres are the sites and the colors correspond to:
+.TP
+white
+empty site which are not a bridge
+.TP
+blue
+empty site which are bridges but not an anti red\-bond
+.TP
+red
+bridges which are an anti red\-bond
+.TP
+green
+occupied sites which are neither connected to the top nor to the bottom
+.TP
+yellow
+occupied sites connected to the top
+.TP
+cyan
+occupied sites connected to the bottom
+.PP
+Occupied sites which are neighbors are connected by a cylinder of the same color. The cylinders have NOTHING to do with bond percolation. This is really site percolation and the cylinders are only here to help human beeing to see better the percolating path. It is also recommended to use only small lattice size (ie.: smaller that 16) otherwise nothing could be seen and the script will be very slow.
+
+.SH EXEMPLES
+.TP
+arb -L 64 -d 0.6042 -n 1000 -s 2> /dev/null
+calculate the number of anti red-bond for a square lattice of size 64x64 at the percolation threshold (ie.: 0.6042) and give the statistic for 1000 non-percolating lattices.
+.SH AUTHOR
+Written by Olivier Scholder
+.SH BUGS
+Report bugs to <\fIoliviesc@phys.ethz.ch\fR>
+.SH COPYRIGHT
+Copyright \(co 2008 Free Software Foundation, Inc. License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+Thid is free software: you are free to change and redistribute it.
+There is NO WaRRANTY, to the extent permitted by law.

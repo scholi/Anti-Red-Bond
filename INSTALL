@@ -1,0 +1,11 @@
+INSTALL
+=======
+
+make
+make install
+
+HELP 
+====
+To get help after install, check manpages:
+
+man arb
