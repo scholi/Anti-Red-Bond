@@ -15,6 +15,7 @@
 #include "stat.h"
 #include <iostream>
 #include <ctime>
+#include <getopt.h>
 
 extern char *optarg;
 extern int optind, opterr;
